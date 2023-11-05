@@ -3,13 +3,13 @@
 /*******Displaying the prompt******/
 
 /**
- * show_prompt - Displayscthe prompt sign
+ * show_prompt - Displays the prompt sign
  *
  * Return: Always 0
  */
 void show_prompt(void)
 {
-	shell_print("$$");
+	shell_print("$");
 }
 
 
@@ -65,16 +65,25 @@ void execute_input(const char *input)
 	pid_t baby_pid  = fork();
 	if (baby_pid == -1)
 	{
-		perror("fork");
+		shell_print("Error in process \n");
 		exit(EXIT_FAILURE);
 	}
 	else if (baby_pid == 0)
 	{
-		if (execve(const char *input, char *input, NULL) == -1)
+		char *args[200];
+		int arg_count = 0;
+
+		char *token = strtok((char *)input, " ");
+		while (token != NULL)
 		{
-			perror("Error");
-			exit(EXIT_FAILURE);
+			args[arg_count++] = token;
+			token = strtok(NULL, " ");
 		}
+		args[arg_count] = NULL;
+		
+		execve(args[0], args, NULL);
+		shell_print("\n");
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
