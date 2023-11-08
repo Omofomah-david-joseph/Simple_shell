@@ -1,5 +1,5 @@
 # Simple Shell Project
-This is the Simple Shell project by David Joseph Omofomah and Emmanuel Onyeozu.
+This is the Simple Shell project by David Joseph Omofomah and Onyeozu Emmanuel.
 
 ## Project Overview
 The Simple Shell is a command-line interpreter for Unix-like operating systems. It provides a basic interface for users to interact with the system by executing commands. The goal of this project is to create a simple, functional shell that can handle various commands, execute them, and provide a user-friendly interface.
@@ -84,6 +84,6 @@ We welcome feedback, suggestions, and contributions to improve and extend the fu
 
 ## Authors
 - David Joseph Omofomah
-- Emmanuel Onyeozu
+- Onyeozu Emmanuel 
 
 Thank you for using the Simple Shell!
