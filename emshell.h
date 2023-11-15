@@ -14,13 +14,14 @@
 
 /* for read/write buffers */
 #define FBUF_SIZE 1024
+#define FWBUF_SIZE 1024
 #define FBUF_FLUSH -1
 
 /* for command chaining */
-#define FMD_AND		2
-#define FMD_CHAIN	3
 #define FMD_N		0
 #define FMD_OR		1
+#define FMD_AND		2
+#define FMD_CHAIN	3
 
 
 /* for convert_number() */
@@ -50,7 +51,7 @@ typedef struct liststr
 } list_t;
 
 /**
- *struct passinfo - It contains pseudo-arguements to pass into a function,
+ *struct passinfo - contains pseudo-arguements to pass into a function,
  *		allowing uniform prototype for function pointer struct
  *@arg: a string generated from getline containing arguements
  *@argv: an array of strings generated from arg
