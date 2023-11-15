@@ -1,7 +1,7 @@
 #include "emshell.h"
 
 /**
- * shell - The main shell loop
+ * shell - main shell loop
  * @finfo: the parameter & return finfo struct
  * @av: the argument vector from main()
  *
@@ -63,7 +63,7 @@ int find_builtin(finfo_a *finfo)
 		{"setenv", _fmsetenv},
 		{"unsetenv", _funsetenv},
 		{"cd", _fcd},
-		{"falias", _myfalias},
+		{"alias", _myfalias},
 		{NULL, NULL}
 	};
 
@@ -100,20 +100,20 @@ void find_cmd(finfo_a *finfo)
 	if (!k)
 		return;
 
-	path = find_fpath(finfo, _fgetenv(finfo, "PATH="), (*finfo).argv[0]);
+	path = find_fpath(finfo, _fgetenv(finfo, "PATH="), finfo->argv[0]);
 	if (path)
 	{
-		(*finfo).path = path;
+		finfo->path = path;
 		fork_cmd(finfo);
 	}
 	else
 	{
 		if ((interact(finfo) || _fgetenv(finfo, "PATH=")
-			|| (*finfo).argv[0][0] == '/') && fcmd(finfo, (*finfo).argv[0]))
+			|| finfo->argv[0][0] == '/') && fcmd(finfo, finfo->argv[0]))
 			fork_cmd(finfo);
-		else if (*((*finfo).arg) != '\n')
+		else if (*(finfo->arg) != '\n' && _strcmp(finfo->argv[0], "/") != 0)
 		{
-			(*finfo).status = 127;
+			finfo->status = 127;
 			print_error(finfo, "not found\n");
 		}
 	}
@@ -132,7 +132,6 @@ void fork_cmd(finfo_a *finfo)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -145,7 +144,6 @@ void fork_cmd(finfo_a *finfo)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
