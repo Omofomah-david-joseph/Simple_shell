@@ -1,7 +1,7 @@
 #include "emshell.h"
 
 /**
- * interact - It returns true if shell is interact mode
+ * interact - returns true if shell is interact mode
  * @finfo: struct address
  *
  * Return: 1 if interact mode, 0 otherwise
@@ -47,7 +47,7 @@ char *_memset(char *s, char b, unsigned int n)
 }
 
 /**
- * ffree - It frees a string of strings
+ * ffree - frees a string of strings
  * @pp: string of strings
  */
 void ffree(char **pp)
