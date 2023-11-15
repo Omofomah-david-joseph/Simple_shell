@@ -1,7 +1,7 @@
 #include "emshell.h"
 
 /**
- * _fhistory - it displays the history list, one command by line, preceded
+ * _fhistory - displays the history list, one command by line, preceded
  *              with line numbers, starting at 0.
  * @finfo: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
