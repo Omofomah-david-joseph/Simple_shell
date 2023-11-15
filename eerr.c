@@ -1,7 +1,7 @@
 #include "emshell.h"
 
 /**
- *_fputs - It prints an input string
+ *_fputs - prints an input string
  * @fstr: the string to be printed
  *
  * Return: Nothing
@@ -29,9 +29,9 @@ void _fputs(char *fstr)
 int _fputchar(char c)
 {
 	static int i;
-	static char buf[FBUF_SIZE];
+	static char buf[FWBUF_SIZE];
 
-	if (c == FBUF_FLUSH || i >= FBUF_SIZE)
+	if (c == FBUF_FLUSH || i >= FWBUF_SIZE)
 	{
 		write(2, buf, i);
 		i = 0;
@@ -52,9 +52,9 @@ int _fputchar(char c)
 int _fputfd(char c, int fd)
 {
 	static int i;
-	static char buf[FBUF_SIZE];
+	static char buf[FWBUF_SIZE];
 
-	if (c == FBUF_FLUSH || i >= FBUF_SIZE)
+	if (c == FBUF_FLUSH || i >= FWBUF_SIZE)
 	{
 		write(fd, buf, i);
 		i = 0;
